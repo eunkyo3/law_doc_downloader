@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
 
@@ -73,10 +74,10 @@ try:
         # 팝업 닫기
         driver.switch_to.window(driver.window_handles[0])
   
-    current_page = 1  # 현재 페이지 번호(원하는 페이지로 변경하여 사용 가능 단, 페이지의 첫번째 케이스부터 다운로드 시작)
+    current_page = 10  # 원하는 페이지부터 다운 가능
     idx = 1  # 페이지 번호 초기값
   
-    for _ in range(0, current_page + 1):
+    for _ in range(0, current_page -1):
         try:
             if idx % 5 == 0:  # 5의 배수일 경우 "다음으로" 버튼 클릭
                 next_page_button = WebDriverWait(driver, 10).until(
